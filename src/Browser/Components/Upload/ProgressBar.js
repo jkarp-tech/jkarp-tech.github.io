@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import useStorage from "../Helpers/useStorage";
+import useStorage from "../../../Helpers/useStorage";
 import styled from "styled-components";
-import { projectFirestore, timestamp } from "../Firebase/config";
+import { projectFirestore, timestamp } from "../../../Firebase/config";
 
 const Bar = styled.div`
     width: ${(props) => props.progress + "%"};

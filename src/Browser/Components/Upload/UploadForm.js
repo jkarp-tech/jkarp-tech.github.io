@@ -1,11 +1,23 @@
 import React, { useState } from "react";
-import ProgressBar from "../../../Components/ProgressBar";
+
+import ProgressBar from "./ProgressBar";
+import {
+    UploadFormContainer,
+    Error,
+    FileInput,
+    Header,
+    Submit,
+} from "./Styles/UploadFormStyles";
 
 const types = ["image/png", "image/jpg", "image/jpeg"];
 
 const UploadForm = () => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
+
+    const IsError = ({ children }) => (error ? children : null);
+
+    const IsFile = ({ children }) => (file ? children : null);
 
     const handleChange = ({ target }) => {
         const tempfile = target.files[0];
@@ -20,19 +32,22 @@ const UploadForm = () => {
     };
 
     return (
-        <>
-            <form>
-                <input type="file" onChange={handleChange} />
-            </form>
-            {error && <div> Error </div>}
-            {file && (
+        <UploadFormContainer>
+            <Header> Upload Files </Header>
+            <FileInput type="file" onChange={handleChange}>
+                <Submit> Click To Upload </Submit>
+            </FileInput>
+            <IsError>
+                <Error>{error}</Error>
+            </IsError>
+            <IsFile>
                 <ProgressBar
                     file={file}
                     setFile={setFile}
                     collection={"birds"}
                 />
-            )}
-        </>
+            </IsFile>
+        </UploadFormContainer>
     );
 };
 

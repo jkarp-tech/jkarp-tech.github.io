@@ -2,6 +2,7 @@ import React, { createContext } from "react";
 import { useLocation, Redirect } from "react-router-dom";
 import { useAuth } from "../../../Helpers/useAuth";
 import UploadForm from "./UploadForm";
+import { Loading } from "./Styles/UploadStyles";
 
 const UserContext = createContext({
     user: null,
@@ -15,7 +16,7 @@ const Upload = () => {
     };
 
     if (initializing) {
-        return <div> Loading... </div>;
+        return <Loading> Loading... </Loading>;
     }
 
     return (
