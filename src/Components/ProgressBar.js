@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import useStorage from "../Helpers/useStorage";
 import styled from "styled-components";
+import { projectFirestore, timestamp } from "../Firebase/config";
 
 const Bar = styled.div`
     width: ${(props) => props.progress + "%"};
@@ -10,16 +11,44 @@ const Bar = styled.div`
 `;
 
 const ProgressBar = ({ file, setFile, collection }) => {
-    const { progress, urls, error } = useStorage(file, collection);
+    const data = [
+        useStorage(file, 1),
+        useStorage(file, 2),
+        useStorage(file, 3),
+        useStorage(file, 4),
+    ];
+
+    const urls = data.map((f) => f.url);
+    const progress = data.reduce((prog, f) => prog + f.progress, 0);
+    const errors = data.map((f) => f.errors);
+
+    const saving = useRef(false);
 
     useEffect(() => {
-        console.log(urls);
-        if (!urls.includes(null)) {
-            setFile(null);
-        }
-    }, [urls, urls[3], setFile, file]);
+        const save = async () => {
+            const collectionRef = projectFirestore.collection(collection);
+            const urlsString = urls.toString();
+            const createdAt = timestamp();
 
-    return <Bar progress={progress} />;
+            collectionRef.add({ urlsString, createdAt }).then((doc) => {
+                setFile(null);
+            });
+        };
+
+        if (!urls.includes(null) && !saving.current) {
+            saving.current = true;
+            save();
+        }
+
+        return () => (saving.current = false);
+    }, [urls, setFile, collection]);
+
+    return (
+        <>
+            <Bar progress={progress} />
+            {!errors.includes(null) && <div> {"Errors"}</div>}
+        </>
+    );
 };
 
 export default ProgressBar;
