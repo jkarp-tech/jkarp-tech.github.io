@@ -8,5 +8,7 @@ export const theme = {
     },
     colors: {
         white: "#FFFFFF",
+        accent: "#BBBBBB",
     },
+    bodyheight: "calc(100vh - 70px)",
 };

@@ -7,6 +7,8 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import Contact from "./Components/Contact";
+import Upload from "./Components/Upload/Upload";
+import SignIn from "./Components/Upload/SignIn";
 
 import { ThemeProvider } from "styled-components";
 import { theme } from "./Styles/Configs";
@@ -33,6 +35,12 @@ const BrowserApp = () => (
                         </Route>
                         <Route exact path="/contact">
                             <Contact />
+                        </Route>
+                        <Route exact path="/upload">
+                            <Upload />
+                        </Route>
+                        <Route exact path="/signin">
+                            <SignIn />
                         </Route>
                         <Route path="/">
                             <Home />

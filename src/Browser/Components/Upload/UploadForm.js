@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProgressBar from "../Components/ProgressBar";
+import ProgressBar from "../../../Components/ProgressBar";
 
 const types = ["image/png", "image/jpg", "image/jpeg"];
 
