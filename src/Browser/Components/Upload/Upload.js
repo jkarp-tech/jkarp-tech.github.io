@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { useLocation, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useAuth } from "../../../Helpers/useAuth";
 import UploadForm from "./UploadForm";
 import { Loading } from "./Styles/UploadStyles";
