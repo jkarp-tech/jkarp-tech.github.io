@@ -28,12 +28,12 @@ const SignIn = () => {
             });
     };
 
-    const onChangeUsername = ({ target }) => {
-        setEmail(target.value);
+    const onChangeUsername = ({ target: { value } }) => {
+        setEmail(value);
     };
 
-    const onChangePassword = ({ target }) => {
-        setPassword(target.value);
+    const onChangePassword = ({ target: { value } }) => {
+        setPassword(value);
     };
 
     const IsError = ({ children }) => (error ? children : null);
