@@ -6,7 +6,7 @@ import {
     NavItemContainer,
     LogoContainer,
 } from "./Styles/HeaderStyles";
-import NavItem from "../NavItem";
+import NavItem from "./NavItem";
 
 const Header = () => (
     <HeaderContainer>
