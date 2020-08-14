@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { createContext } from "react";
 import useFirestore from "../Helpers/useFirestore";
 
 export const UrlContext = createContext({});

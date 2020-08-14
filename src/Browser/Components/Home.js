@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
-import usePreloadImage from "../../Helpers/usePreloadImage";
+import { UrlContext } from "../../Context/UrlProvider";
 
 import {
     HomepageContainer,
@@ -12,19 +12,23 @@ import {
     AboutContainer,
     About,
 } from "./Styles/HomeStyles";
+import AsyncImage from "../Images/Images";
+import usePreloadImage from "../../Helpers/usePreloadImage";
 
-const Home = ({ image, imageData }) => {
-    const [loading, setLoading] = useState(true);
+const Home = () => {
+    const { urlsString } = useContext(UrlContext)[0];
+    const defaultUrl = urlsString.split(",")[0];
 
-    const img = usePreloadImage({
-        url: imageData[0].urlsString,
-        callback: () => setLoading(false),
-    });
+    const [{ src, srcset }, loading] = usePreloadImage(defaultUrl, urlsString);
+
+    if (loading) {
+        return <div> loading ... </div>;
+    }
 
     return (
         <HomepageContainer>
             <ImageContainer>
-                <HomepageImage srcSet={loading ? image.srcset : img.srcset} />
+                <HomepageImage src={src} srcSet={srcset} />
             </ImageContainer>
             <InfoContainer>
                 <HeadshotContainer>
