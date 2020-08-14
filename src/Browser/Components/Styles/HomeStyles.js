@@ -14,6 +14,7 @@ const HomepageContainer = styled.div`
     flex-direction: column;
     align-items: center;
     height: ${(props) => props.theme.bodyheight};
+    width: 100%;
 `;
 
 const HomepageImage = styled.img`
@@ -22,7 +23,9 @@ const HomepageImage = styled.img`
 `;
 
 const ImageContainer = styled.div`
+    width: 100%;
     animation: ${fadein} 1s;
+    display: flex;
 `;
 
 const InfoContainer = styled.div`
