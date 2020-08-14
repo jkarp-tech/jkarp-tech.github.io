@@ -19,7 +19,7 @@ import {
 } from "./Styles/FileStyles";
 
 const types = ["image/png", "image/jpg", "image/jpeg"];
-const categories = ["birds", "wildlife", "nature"];
+const categories = ["birds", "wildlife", "nature", "homepage"];
 
 const File = ({ input }) => {
     const [file, setFile] = useState(null);

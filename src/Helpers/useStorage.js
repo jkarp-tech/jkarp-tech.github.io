@@ -2,15 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { projectStorage } from "../Firebase/config";
 import ImageCompression from "browser-image-compression";
 
-const sizes = [0.25, 0.5, 1, 2];
-
-const getOptions = (index) => {
-    return {
-        maxSizeMB: sizes[index - 1],
-        maxWidthOrHeight: 1920,
-        userWebWorker: true,
-    };
-};
+const sizes = [0.01, 0.1, 0.5, 1, 2];
 
 const useStorage = (file, index) => {
     const [progress, setProgress] = useState(0);
@@ -24,6 +16,15 @@ const useStorage = (file, index) => {
 
         try {
             const compress = async () => {
+                const getOptions = (index) => {
+                    const max = index === 0 ? 32 : 1920;
+                    return {
+                        maxSizeMB: sizes[index],
+                        maxWidthOrHeight: max,
+                        userWebWorker: true,
+                    };
+                };
+
                 const compressedFile = await ImageCompression(
                     file,
                     getOptions(index)

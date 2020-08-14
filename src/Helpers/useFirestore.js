@@ -3,6 +3,7 @@ import { projectFirestore } from "../Firebase/config";
 
 const useFirestore = (collection) => {
     const [docs, setDocs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const unsubscribe = projectFirestore
@@ -11,15 +12,15 @@ const useFirestore = (collection) => {
             .onSnapshot((snap) => {
                 let documents = [];
                 snap.forEach((doc) => {
-                    debugger;
                     documents.push({ ...doc.data(), id: doc.id });
                 });
                 setDocs(documents);
+                setLoading(false);
             });
         return () => unsubscribe();
     }, [collection]);
 
-    return { docs };
+    return [docs, loading];
 };
 
 export default useFirestore;

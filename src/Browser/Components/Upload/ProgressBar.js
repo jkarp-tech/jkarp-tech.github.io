@@ -10,6 +10,7 @@ const ProgressBar = ({
     data: { category, description, name, date },
 }) => {
     const data = [
+        useStorage(file, 0),
         useStorage(file, 1),
         useStorage(file, 2),
         useStorage(file, 3),
@@ -17,7 +18,7 @@ const ProgressBar = ({
     ];
 
     const urls = data.map((f) => f.url);
-    const progress = data.reduce((prog, f) => prog + f.progress / 4, 0);
+    const progress = data.reduce((prog, f) => prog + f.progress / 5, 0);
     const errors = data.map((f) => f.error);
 
     const saving = useRef(false);

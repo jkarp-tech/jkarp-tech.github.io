@@ -12,7 +12,11 @@ const Upload = () => {
     const [initializing, user] = useAuth();
 
     const IsSignedIn = ({ children }) => {
-        return !user ? children[0] : children[1];
+        if (user && !user.isAnonymous) {
+            return children[1];
+        } else {
+            return children[0];
+        }
     };
 
     if (initializing) {
