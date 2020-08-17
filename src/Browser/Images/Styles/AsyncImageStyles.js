@@ -12,6 +12,7 @@ const fadein = keyframes`
 const Image = styled.img`
     animation: ${fadein} 0.5s;
     width: 90%;
+    height: 100%;
 `;
 
 const ImageContainer = styled.div`
