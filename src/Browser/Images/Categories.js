@@ -1,15 +1,16 @@
 import React from "react";
+import Category from "./Category";
 
 const Birds = () => {
-    return <div>Birds</div>;
+    return <Category page={"birds"} />;
 };
 
 const Nature = () => {
-    return <div>Nature</div>;
+    return <Category page={"nature"} />;
 };
 
 const Wildlife = () => {
-    return <div>Wildlife</div>;
+    return <Category page={"wildlife"} />;
 };
 
 export { Birds, Nature, Wildlife };
