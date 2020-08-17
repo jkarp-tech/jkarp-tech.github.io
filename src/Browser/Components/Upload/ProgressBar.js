@@ -7,7 +7,7 @@ import { LoadingBar, Error, Text } from "./Styles/ProgressBarStyles";
 const ProgressBar = ({
     file,
     onComplete,
-    data: { category, description, name, date },
+    data: { category, description, name, date, height, width },
 }) => {
     const data = [
         useStorage(file, 0),
@@ -30,7 +30,15 @@ const ProgressBar = ({
             const createdAt = timestamp();
 
             collectionRef
-                .add({ urlsString, createdAt, description, date, name })
+                .add({
+                    urlsString,
+                    createdAt,
+                    description,
+                    date,
+                    name,
+                    height,
+                    width,
+                })
                 .then((doc) => {
                     console.log("saved: ");
                     console.log(doc);
@@ -44,7 +52,7 @@ const ProgressBar = ({
         }
 
         return () => (saving.current = false);
-    }, [urls, category, date, description, name, onComplete]);
+    }, [urls, category, date, description, name, height, width, onComplete]);
 
     if (!errors.includes(null)) {
         console.log(errors);

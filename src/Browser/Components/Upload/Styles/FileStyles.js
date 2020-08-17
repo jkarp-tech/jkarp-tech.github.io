@@ -104,6 +104,8 @@ const Error = styled(FileContainer)`
     height: 100px;
 `;
 
+const Loading = Error;
+
 export {
     FileContainer,
     FileContainerContents,
@@ -118,5 +120,6 @@ export {
     FileNameContainer,
     Submit,
     Text,
+    Loading,
     Error,
 };

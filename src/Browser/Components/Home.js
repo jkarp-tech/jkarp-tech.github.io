@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { UrlContext } from "../../Context/UrlProvider";
 
@@ -7,38 +7,55 @@ import {
     ImageContainer,
     HomepageImage,
     InfoContainer,
-    HeadshotContainer,
-    Headshot,
     AboutContainer,
     About,
 } from "./Styles/HomeStyles";
-import AsyncImage from "../Images/Images";
 import usePreloadImage from "../../Helpers/usePreloadImage";
+import Loader from "./Loader";
+import { LoaderContext } from "../../Context/LoaderProvider";
+
+const getURLs = ({ urlsString }) => {
+    const defaultURL = urlsString.split(",")[0];
+    return { defaultURL, urlsString };
+};
 
 const Home = () => {
-    const { urlsString } = useContext(UrlContext)[0];
-    const defaultUrl = urlsString.split(",")[0];
+    const urlData = useContext(UrlContext);
+    const { loaders, setLoaders } = useContext(LoaderContext);
 
-    const [{ src, srcset }, loading] = usePreloadImage(defaultUrl, urlsString);
+    const [[mainSrc, mainSrcSet], mainLoading] = usePreloadImage(
+        getURLs(urlData.home[0])
+    );
 
-    if (loading) {
-        return <div> loading ... </div>;
-    }
+    useEffect(() => {
+        if (loaders["home"]) {
+            setLoaders((l) => {
+                return {
+                    ...l,
+                    home: false,
+                };
+            });
+        }
+    }, [loaders, setLoaders]);
 
     return (
-        <HomepageContainer>
-            <ImageContainer>
-                <HomepageImage src={src} srcSet={srcset} />
-            </ImageContainer>
-            <InfoContainer>
-                <HeadshotContainer>
-                    <Headshot />
-                </HeadshotContainer>
-                <AboutContainer>
-                    <About>About Stuff</About>
-                </AboutContainer>
-            </InfoContainer>
-        </HomepageContainer>
+        <>
+            {(mainLoading || loaders["home"]) && <Loader />}
+            <HomepageContainer>
+                <ImageContainer>
+                    <HomepageImage src={mainSrc} srcSet={mainSrcSet} />
+                </ImageContainer>
+                <InfoContainer>
+                    <AboutContainer>
+                        <About>
+                            "Photographing nature brings such great joy. It has
+                            taught me appreciation for the fragile world around
+                            us which changes moment by moment."
+                        </About>
+                    </AboutContainer>
+                </InfoContainer>
+            </HomepageContainer>
+        </>
     );
 };
 

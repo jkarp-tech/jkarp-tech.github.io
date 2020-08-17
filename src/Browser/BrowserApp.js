@@ -20,43 +20,46 @@ import {
     HorizontalCenter,
 } from "./Styles/BrowserAppStyles";
 import UrlProvider from "../Context/UrlProvider";
+import LoaderProvider from "../Context/LoaderProvider";
 
 const BrowserApp = () => {
     return (
         <UrlProvider>
-            <ThemeProvider theme={theme}>
-                <HorizontalCenter>
-                    <BrowserAppContainer>
-                        <Router>
-                            <Header />
-                            <Switch>
-                                <Route exact path="/birds">
-                                    <Birds />
-                                </Route>
-                                <Route exact path="/wildlife">
-                                    <Wildlife />
-                                </Route>
-                                <Route exact path="/nature">
-                                    <Nature />
-                                </Route>
-                                <Route exact path="/contact">
-                                    <Contact />
-                                </Route>
-                                <Route exact path="/upload">
-                                    <Upload />
-                                </Route>
-                                <Route exact path="/signin">
-                                    <SignIn />
-                                </Route>
-                                <Route path="/">
-                                    <Home />
-                                </Route>
-                            </Switch>
-                            <Footer />
-                        </Router>
-                    </BrowserAppContainer>
-                </HorizontalCenter>
-            </ThemeProvider>
+            <LoaderProvider>
+                <ThemeProvider theme={theme}>
+                    <HorizontalCenter>
+                        <BrowserAppContainer>
+                            <Router>
+                                <Header />
+                                <Switch>
+                                    <Route exact path="/birds">
+                                        <Birds />
+                                    </Route>
+                                    <Route exact path="/wildlife">
+                                        <Wildlife />
+                                    </Route>
+                                    <Route exact path="/nature">
+                                        <Nature />
+                                    </Route>
+                                    <Route exact path="/contact">
+                                        <Contact />
+                                    </Route>
+                                    <Route exact path="/upload">
+                                        <Upload />
+                                    </Route>
+                                    <Route exact path="/signin">
+                                        <SignIn />
+                                    </Route>
+                                    <Route path="/">
+                                        <Home />
+                                    </Route>
+                                </Switch>
+                                <Footer />
+                            </Router>
+                        </BrowserAppContainer>
+                    </HorizontalCenter>
+                </ThemeProvider>
+            </LoaderProvider>
         </UrlProvider>
     );
 };

@@ -16,6 +16,7 @@ import {
     Submit,
     Text,
     Error,
+    Loading,
 } from "./Styles/FileStyles";
 
 const types = ["image/png", "image/jpg", "image/jpeg"];
@@ -28,6 +29,10 @@ const File = ({ input }) => {
     const [category, setCategory] = useState(categories[0]);
     const [name, setName] = useState(input.name);
     const [src, setSrc] = useState(null);
+    const [height, setHeight] = useState(0);
+    const [width, setWidth] = useState(0);
+
+    const [loading, setLoading] = useState(true);
 
     const [didSubmit, setDidSubmit] = useState(false);
     const [finished, setFinished] = useState(false);
@@ -58,7 +63,16 @@ const File = ({ input }) => {
             const reader = new FileReader();
 
             reader.onload = () => {
-                setSrc(reader.result);
+                const img = new Image();
+
+                img.src = reader.result;
+
+                img.onload = ({ target }) => {
+                    setSrc(reader.result);
+                    setHeight(target.height);
+                    setWidth(target.width);
+                    setLoading(false);
+                };
             };
 
             reader.readAsDataURL(input);
@@ -90,6 +104,10 @@ const File = ({ input }) => {
 
     if (error) {
         return <Error>{error}</Error>;
+    }
+
+    if (loading) {
+        return <Loading> Loading... </Loading>;
     }
 
     return (
@@ -135,7 +153,7 @@ const File = ({ input }) => {
                 <Submit onClick={handleSubmit}>Submit</Submit>
                 <ProgressBar
                     file={file}
-                    data={{ category, description, date, name }}
+                    data={{ category, description, date, name, height, width }}
                     onComplete={() => setFinished(true)}
                 />
                 <Text> Finished Submitting </Text>

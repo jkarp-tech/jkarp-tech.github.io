@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const usePreloadImage = (src, urlsString) => {
-    const [srcset, setSrcSet] = useState(src);
+const usePreloadImage = ({ defaultURL, urlsString }) => {
+    const [srcset, setSrcSet] = useState(defaultURL);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -23,10 +23,10 @@ const usePreloadImage = (src, urlsString) => {
         };
 
         srcsetpreloader(urlsString);
-        srcpreloader(src);
-    }, [urlsString]);
+        srcpreloader(defaultURL);
+    }, [urlsString, defaultURL]);
 
-    return [{ src, srcset }, loading];
+    return [[defaultURL, srcset], loading];
 };
 
 export default usePreloadImage;

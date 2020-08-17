@@ -1,16 +1,25 @@
 import React, { createContext } from "react";
 import useFirestore from "../Helpers/useFirestore";
+import Loader from "../Browser/Components/Loader";
 
 export const UrlContext = createContext({});
 
 const UrlProvider = ({ children }) => {
-    const [data, loading] = useFirestore("homepage");
+    const [home, homeLoading] = useFirestore("homepage");
+    const [birds, birdLoading] = useFirestore("birds");
+    const [wildlife, wildlifeLoading] = useFirestore("wildlife");
+    const [nature, natureLoading] = useFirestore("nature");
 
-    if (!data || loading) {
-        return <div> loading ... </div>;
+    debugger;
+    if (homeLoading || birdLoading || wildlifeLoading || natureLoading) {
+        return null;
     }
 
-    return <UrlContext.Provider value={data}>{children}</UrlContext.Provider>;
+    return (
+        <UrlContext.Provider value={{ home, birds, wildlife, nature }}>
+            {children}
+        </UrlContext.Provider>
+    );
 };
 
 export default UrlProvider;
