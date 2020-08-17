@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.div`
     position: sticky;
@@ -29,7 +30,9 @@ export const LeftContainer = styled.div`
     }
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled(Link)`
+    text-decoration: none;
+    color: black;
     display: flex;
     font-size: 22px;
     letter-spacing: 1px;

@@ -33,7 +33,8 @@ const StyledLoader = styled.div`
 
 const LoaderCard = styled.div`
     background-color: rgb(220 220 220);
-    height: ${(props) => props.theme.bodyheight}px;
+    height: ${(props) =>
+        props.height ? props.height : props.theme.bodyheight};
     width: 100%;
     display: flex;
     align-items: center;

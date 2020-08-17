@@ -2,8 +2,8 @@ import React from "react";
 
 import { StyledLoader, LoaderCard } from "./Styles/LoaderStyles";
 
-const Loader = () => (
-    <LoaderCard>
+const Loader = ({ height = null }) => (
+    <LoaderCard height={height}>
         <StyledLoader />
     </LoaderCard>
 );

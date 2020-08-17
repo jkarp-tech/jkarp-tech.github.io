@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Redirect,
+} from "react-router-dom";
 
 import { Birds, Wildlife, Nature } from "./Images/Categories";
 
@@ -50,9 +55,10 @@ const BrowserApp = () => {
                                     <Route exact path="/signin">
                                         <SignIn />
                                     </Route>
-                                    <Route path="/">
+                                    <Route exact path="/home">
                                         <Home />
                                     </Route>
+                                    <Redirect to="/home" />
                                 </Switch>
                                 <Footer />
                             </Router>

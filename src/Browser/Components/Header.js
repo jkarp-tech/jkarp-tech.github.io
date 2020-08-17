@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <HeaderContainer>
             <LeftContainer>
-                <LogoContainer>
+                <LogoContainer to={"home"}>
                     <LogoTop>
                         <WrapString>LAUREN KARP</WrapString>
                     </LogoTop>

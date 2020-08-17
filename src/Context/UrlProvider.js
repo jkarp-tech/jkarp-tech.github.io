@@ -10,9 +10,8 @@ const UrlProvider = ({ children }) => {
     const [wildlife, wildlifeLoading] = useFirestore("wildlife");
     const [nature, natureLoading] = useFirestore("nature");
 
-    debugger;
     if (homeLoading || birdLoading || wildlifeLoading || natureLoading) {
-        return null;
+        return <Loader height={"100vh"} />;
     }
 
     return (
