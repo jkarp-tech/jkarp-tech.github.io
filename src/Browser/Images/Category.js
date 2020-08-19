@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useLayoutEffect } from "react";
 
 import {
     CategoryContainer,
@@ -13,23 +13,15 @@ import { LoaderContext } from "../../Context/LoaderProvider";
 
 const Category = ({ page }) => {
     const urlData = useContext(UrlContext);
+    const dataLength = urlData[page].length;
+
     const { loaders, setLoaders } = useContext(LoaderContext);
 
     const [leftLayout, setLeftLayout] = useState([]);
     const [rightLayout, setRightLayout] = useState([]);
+    const [imagesLoaded, setImagesLoaded] = useState(0);
 
-    useEffect(() => {
-        if (loaders[page]) {
-            setLoaders((l) => {
-                return {
-                    ...l,
-                    [page]: false,
-                };
-            });
-        }
-    }, [loaders, page, setLoaders]);
-
-    useEffect(() => {
+    useLayoutEffect(() => {
         const urlArr = urlData[page];
 
         let left = 0;
@@ -53,14 +45,27 @@ const Category = ({ page }) => {
         setRightLayout(rightLayout);
     }, [urlData, page]);
 
+    useLayoutEffect(() => {
+        if (loaders[page] && imagesLoaded === urlData[page].length) {
+            setLoaders((l) => ({
+                ...l,
+                [page]: false,
+            }));
+        }
+    }, [loaders, page, imagesLoaded, urlData, setLoaders]);
+
+    const onLoad = () => {
+        setImagesLoaded((idx) => (idx !== dataLength ? idx + 1 : idx));
+    };
+
     const RightImages = () =>
         rightLayout.map((d) => (
-            <AsyncImage urlData={d} key={d.name} side={"right"} />
+            <AsyncImage onLoad={onLoad} key={d.name} data={d} side={"right"} />
         ));
 
     const LeftImages = () =>
         leftLayout.map((d) => (
-            <AsyncImage urlData={d} key={d.name} side={"left"} />
+            <AsyncImage onLoad={onLoad} key={d.name} data={d} side={"left"} />
         ));
 
     return (

@@ -1,18 +1,21 @@
 import React from "react";
-import { Image, ImageContainer } from "./Styles/AsyncImageStyles";
+import { Image, ImageContainer, LoadingImage } from "./Styles/AsyncImageStyles";
 import usePreloadImage from "../../Helpers/usePreloadImage";
 
-const getURLs = ({ urlsString }) => {
+const getURLs = (urlsString) => {
     const defaultURL = urlsString.split(",")[0];
-    return { defaultURL, urlsString };
+    return [defaultURL, urlsString];
 };
 
-const AsyncImage = ({ urlData, name, createdAt, date, description, side }) => {
-    const [[src, srcSet], loading] = usePreloadImage(getURLs(urlData));
-
-    if (loading) {
-        return null;
-    }
+const AsyncImage = ({ data, side, onLoad }) => {
+    const { name, height, width, createdAt, description, urlsString } = data;
+    const [src, srcSet] = usePreloadImage(
+        {
+            defaultSrc: urlsString.split(",")[0].split(" ")[0],
+            loadedSrc: urlsString,
+        },
+        onLoad
+    );
 
     return (
         <ImageContainer side={side}>

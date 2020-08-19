@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const fadein = keyframes`
+export const fadein = keyframes`
     from {
         opacity: 0;
     }
@@ -9,13 +9,14 @@ const fadein = keyframes`
     }
 `;
 
-const Image = styled.img`
-    animation: ${fadein} 0.5s;
+export const Image = styled.img`
+    animation: ${fadein} 1s;
     width: 90%;
-    height: 100%;
+    height: auto;
+    background-color: lightgray;
 `;
 
-const ImageContainer = styled.div`
+export const ImageContainer = styled.div`
     padding: 0px 5px 10px 5px;
     width: 100%;
     display: flex;
@@ -26,4 +27,10 @@ const ImageContainer = styled.div`
     }
 `;
 
-export { Image, ImageContainer };
+export const LoadingImage = styled.img`
+    background-color: lightgray;
+    width: 90%;
+    height: ${({ h, w, totalWidth }) => {
+        return (h / w) * 100;
+    }}%;
+`;

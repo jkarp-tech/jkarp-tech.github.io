@@ -1,32 +1,30 @@
 import { useEffect, useState } from "react";
 
-const usePreloadImage = ({ defaultURL, urlsString }) => {
-    const [srcset, setSrcSet] = useState(defaultURL);
-    const [loading, setLoading] = useState(true);
+const usePreloadImage = ({ defaultSrc, loadedSrc }, onLoad = () => {}) => {
+    const [srcset, setSrcSet] = useState(defaultSrc);
 
     useEffect(() => {
-        const srcpreloader = (url) => {
-            const preloadimage = new Image();
-            preloadimage.src = url;
-            preloadimage.onload = () => {
-                setLoading(false);
-            };
+        const srcpreloadimage = new Image();
+        const srcsetpreloadimage = new Image();
+
+        srcpreloadimage.src = defaultSrc;
+        srcpreloadimage.onload = () => {
+            onLoad();
         };
 
-        const srcsetpreloader = (urlsString) => {
-            const preloadimage = new Image();
-            preloadimage.srcset = urlsString;
-            preloadimage.onload = () => {
-                setSrcSet(urlsString);
-                setLoading(false);
-            };
+        srcsetpreloadimage.srcset = loadedSrc;
+        srcsetpreloadimage.onload = () => {
+            setSrcSet(loadedSrc);
+            onLoad();
         };
 
-        srcsetpreloader(urlsString);
-        srcpreloader(defaultURL);
-    }, [urlsString, defaultURL]);
+        return () => {
+            srcpreloadimage.onload = null;
+            srcsetpreloadimage.onload = null;
+        };
+    }, [loadedSrc, defaultSrc, onLoad]);
 
-    return [[defaultURL, srcset], loading];
+    return [defaultSrc, srcset];
 };
 
 export default usePreloadImage;
