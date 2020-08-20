@@ -6,7 +6,6 @@ export const BrowserAppContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    // height: 100vh;
     max-width: ${(props) => props.theme.breakpoints.xl}px;
 `;
 
