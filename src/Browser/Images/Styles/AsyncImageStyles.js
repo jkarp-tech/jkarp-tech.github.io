@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const fadein = keyframes`
+export const fadein = keyframes`
     from {
         opacity: 0;
     }
@@ -9,20 +9,72 @@ const fadein = keyframes`
     }
 `;
 
-const Image = styled.img`
-    animation: ${fadein} 0.5s;
-    width: 90%;
+export const Image = styled.img`
+    animation: ${fadein} 1s;
+    width: ${({ side }) => (side ? "90%" : "100%")};
+    height: auto;
+    background-color: lightgray;
+    &:hover {
+        cursor: ${({ side }) => (side ? "pointer" : "")};
+    }
 `;
 
-const ImageContainer = styled.div`
-    padding: 0px 5px 10px 5px;
+export const ModalWrapper = styled.div`
+    height: 100vh;
+    width: 100vw;
+    background-color: #434343ed;
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+`;
+
+export const ImageName = styled.div`
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+    color: white;
+`;
+
+export const ImageNameContainer = styled.div`
+    opacity: 0;
+    position: absolute;
+    width: ${({ side }) => (side ? "calc(90% - 9px)" : "100%")};
+    height: calc(100% - 10px);
+    &:hover {
+        cursor: pointer;
+        opacity: 1;
+        animation: ${fadein} 1s;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0) 100%
+        );
+    }
+`;
+
+export const ImageContainer = styled.div`
+    position: relative;
+    padding: ${({ side }) => {
+        if (side) {
+            return "0px 5px 10px 5px";
+        } else {
+            return "";
+        }
+    }};
     width: 100%;
     display: flex;
-    justify-content: ${({ side }) =>
-        side === "left" ? "flex-end" : "flex-start"};
+    justify-content: ${({ side }) => {
+        if (side === "left") {
+            return "flex-end";
+        } else if (side === "right") {
+            return "flex-start";
+        } else {
+            return "center";
+        }
+    }};
     @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
         justify-content: center;
     }
 `;
-
-export { Image, ImageContainer };

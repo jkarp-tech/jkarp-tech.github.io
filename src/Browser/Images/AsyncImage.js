@@ -1,23 +1,55 @@
-import React from "react";
-import { Image, ImageContainer } from "./Styles/AsyncImageStyles";
+import React, { useState } from "react";
+import {
+    Image,
+    ImageContainer,
+    ImageName,
+    ImageNameContainer,
+    ModalWrapper,
+} from "./Styles/AsyncImageStyles";
 import usePreloadImage from "../../Helpers/usePreloadImage";
+import ImageModal from "./ImageModal";
 
-const getURLs = ({ urlsString }) => {
-    const defaultURL = urlsString.split(",")[0];
-    return { defaultURL, urlsString };
-};
+const AsyncImage = ({ data, side, onLoad }) => {
+    const { name, urlsString } = data;
 
-const AsyncImage = ({ urlData, name, createdAt, date, description, side }) => {
-    const [[src, srcSet], loading] = usePreloadImage(getURLs(urlData));
+    const [src, srcSet] = usePreloadImage(
+        {
+            defaultSrc: urlsString.split(",")[0].split(" ")[0],
+            loadedSrc: urlsString,
+        },
+        onLoad
+    );
 
-    if (loading) {
-        return null;
-    }
+    const [clicked, setClicked] = useState(false);
+
+    const handleOpen = () => {
+        if (side) {
+            setClicked(true);
+        }
+    };
 
     return (
-        <ImageContainer side={side}>
-            <Image src={src} srcSet={srcSet} />
-        </ImageContainer>
+        <>
+            {clicked && (
+                <ModalWrapper>
+                    <ImageModal
+                        clicked={clicked}
+                        setClicked={setClicked}
+                        data={data}
+                        src={src}
+                        srcSet={srcSet}
+                    />
+                </ModalWrapper>
+            )}
+            <ImageContainer side={side} onClick={handleOpen}>
+                <Image side={side} src={src} srcSet={srcSet} />
+                {side && (
+                    <ImageNameContainer side={side}>
+                        <ImageName>{name}</ImageName>
+                    </ImageNameContainer>
+                )}
+            </ImageContainer>
+        </>
     );
 };
 
