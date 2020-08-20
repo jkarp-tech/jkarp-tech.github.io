@@ -1,28 +1,38 @@
 import { useEffect, useState } from "react";
 
-const usePreloadImage = ({ defaultSrc, loadedSrc }, onLoad = () => {}) => {
+const usePreloadImage = (
+    { defaultSrc, loadedSrc },
+    onLoad = () => {},
+    inView = true
+) => {
     const [srcset, setSrcSet] = useState(defaultSrc);
 
     useEffect(() => {
         const srcpreloadimage = new Image();
-        const srcsetpreloadimage = new Image();
 
         srcpreloadimage.src = defaultSrc;
         srcpreloadimage.onload = () => {
             onLoad();
         };
 
-        srcsetpreloadimage.srcset = loadedSrc;
-        srcsetpreloadimage.onload = () => {
-            setSrcSet(loadedSrc);
-            onLoad();
-        };
-
         return () => {
             srcpreloadimage.onload = null;
+        };
+    }, [defaultSrc, onLoad]);
+
+    useEffect(() => {
+        const srcsetpreloadimage = new Image();
+        if (inView) {
+            srcsetpreloadimage.srcset = loadedSrc;
+            srcsetpreloadimage.onload = () => {
+                setSrcSet(loadedSrc);
+                onLoad();
+            };
+        }
+        return () => {
             srcsetpreloadimage.onload = null;
         };
-    }, [loadedSrc, defaultSrc, onLoad]);
+    }, [inView, loadedSrc, onLoad]);
 
     return [defaultSrc, srcset];
 };
