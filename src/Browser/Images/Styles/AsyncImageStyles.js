@@ -12,7 +12,7 @@ export const fadein = keyframes`
 export const Image = styled.img`
     animation: ${fadein} 1s;
     width: ${({ side }) => (side ? "90%" : "100%")};
-    height: auto;
+    height: 100%;
     background-color: lightgray;
     &:hover {
         cursor: ${({ side }) => (side ? "pointer" : "")};
