@@ -15,7 +15,7 @@ const CategoryContainer = styled.div`
     // min-height: ${(props) => props.theme.bodyheight};
     // height: ${(props) => props.theme.bodyheight};
     width: 100%;
-    flex-grow: 1;
+    // flex-grow: 1;
     animation: ${fadein} 1s;
     @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
         flex-direction: column;
@@ -24,8 +24,9 @@ const CategoryContainer = styled.div`
 
 const LeftImageContainer = styled.div`
     flex-direction: column;
-    flex-grow: 1;
-    flex-basis: 0;
+    // flex-grow: 1;
+    // flex-basis: 0;
+    flex: 1 0;
     display: flex;
     align-items: flex-end;
     @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
@@ -35,8 +36,9 @@ const LeftImageContainer = styled.div`
 
 const RightImageContainer = styled.div`
     flex-direction: column;
-    flex-grow: 1;
-    flex-basis: 0;
+    // flex-grow: 1;
+    // flex-basis: 0;
+    flex: 1 0;
     display: flex;
     align-items: flex-start;
     @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
