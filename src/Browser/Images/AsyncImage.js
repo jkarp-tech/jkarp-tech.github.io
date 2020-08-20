@@ -9,6 +9,7 @@ import {
 import usePreloadImage from "../../Helpers/usePreloadImage";
 import ImageModal from "./ImageModal";
 import useIntersectionObserver from "../../Helpers/useIntersectionObserver";
+import Modal from "./Modal";
 
 const formatURL = (urlsString) => ({
     defaultSrc: urlsString.split(",")[0].split(" ")[0],
@@ -37,15 +38,16 @@ const AsyncImage = ({ data, side, onLoad }) => {
     return (
         <>
             {clicked && (
-                <ModalWrapper>
-                    <ImageModal
-                        clicked={clicked}
-                        setClicked={setClicked}
-                        data={data}
-                        src={src}
-                        srcSet={srcSet}
-                    />
-                </ModalWrapper>
+                <Modal>
+                    <ModalWrapper>
+                        <ImageModal
+                            setClicked={setClicked}
+                            data={data}
+                            src={src}
+                            srcSet={srcSet}
+                        />
+                    </ModalWrapper>
+                </Modal>
             )}
             <ImageContainer side={side} onClick={handleOpen}>
                 <Image ref={img} side={side} src={src} srcSet={srcSet} />

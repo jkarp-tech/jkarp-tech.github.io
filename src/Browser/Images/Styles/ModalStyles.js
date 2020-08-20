@@ -70,7 +70,6 @@ export const ModalContent = styled.div`
 
 export const Info = styled.div`
     opacity: ${({ show }) => (show ? 1 : 0)};
-    transition: all 0.5s;
     z-index: 1;
     height: 100%;
     width: 100%;

@@ -12,8 +12,6 @@ import {
     Info,
 } from "./Styles/ModalStyles";
 
-import Modal from "./Modal";
-
 const ImageModal = ({ setClicked, data, src, srcSet }) => {
     const { name, height, width, description, date } = data;
 
@@ -28,34 +26,26 @@ const ImageModal = ({ setClicked, data, src, srcSet }) => {
     };
 
     return (
-        <Modal>
-            <ModalContainer>
-                <ModalHeaderContainer>
-                    <ModalHeader>
-                        <ModalSvg
-                            src={"/Images/close.svg"}
-                            onClick={handleClose}
-                        />
-                        <ModalSvg
-                            src={"/Images/info.svg"}
-                            onClick={handleInfo}
-                        />
-                    </ModalHeader>
-                </ModalHeaderContainer>
-                <ModalContent larger={height >= width} show={show}>
-                    <ModalImage
-                        larger={height >= width}
-                        src={src}
-                        srcSet={srcSet}
-                    />
-                    <Info show={show}>
-                        <ModalName>{name}</ModalName>
-                        <ModalDate>{date}</ModalDate>
-                        <ModalDescription>{description}</ModalDescription>
-                    </Info>
-                </ModalContent>
-            </ModalContainer>
-        </Modal>
+        <ModalContainer>
+            <ModalHeaderContainer>
+                <ModalHeader>
+                    <ModalSvg src={"/Images/close.svg"} onClick={handleClose} />
+                    <ModalSvg src={"/Images/info.svg"} onClick={handleInfo} />
+                </ModalHeader>
+            </ModalHeaderContainer>
+            <ModalContent larger={height >= width} show={show}>
+                <ModalImage
+                    larger={height >= width}
+                    src={src}
+                    srcSet={srcSet}
+                />
+                <Info show={show}>
+                    <ModalName>{name}</ModalName>
+                    <ModalDate>{date}</ModalDate>
+                    <ModalDescription>{description}</ModalDescription>
+                </Info>
+            </ModalContent>
+        </ModalContainer>
     );
 };
 
