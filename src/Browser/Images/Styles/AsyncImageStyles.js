@@ -57,11 +57,18 @@ export const ModalImage = styled.img`
 
 export const ModalInfoContainer = styled.div`
     position: relative;
+    ${({ larger }) => {
+        if (larger) {
+            return "height: 85vw; max-height: 85vh;";
+        } else {
+            return "width: 90vw; max-height: 85vh; max-width: 1000px;";
+        }
+    }}
 
     &:after {
         content: "";
         position: absolute;
-        width: 101%;
+        width: 100%;
         height: 100%;
         top: 0;
         left: 0;
