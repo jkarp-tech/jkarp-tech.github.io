@@ -1,49 +1,26 @@
-import React, { useContext, useEffect } from "react";
-
-import { UrlContext } from "../../Context/UrlProvider";
+import React from "react";
 
 import {
     HomepageContainer,
     ImageContainer,
-    HomepageImage,
+    // HomepageImage,
     InfoContainer,
     AboutContainer,
     About,
 } from "./Styles/HomeStyles";
-import usePreloadImage from "../../Helpers/usePreloadImage";
 import Loader from "./Loader";
-import { LoaderContext } from "../../Context/LoaderProvider";
-
-const getURLs = ({ urlsString }) => {
-    const defaultURL = urlsString.split(",")[0];
-    return { defaultURL, urlsString };
-};
+import AsyncImage from "../Images/AsyncImage";
+import useImagesLoaded from "../../Helpers/useImagesLoaded";
 
 const Home = () => {
-    const urlData = useContext(UrlContext);
-    const { loaders, setLoaders } = useContext(LoaderContext);
-
-    const [[mainSrc, mainSrcSet], mainLoading] = usePreloadImage(
-        getURLs(urlData.home[0])
-    );
-
-    useEffect(() => {
-        if (loaders["home"]) {
-            setLoaders((l) => {
-                return {
-                    ...l,
-                    home: false,
-                };
-            });
-        }
-    }, [loaders, setLoaders]);
+    const [finishedLoading, onLoad, data] = useImagesLoaded("home");
 
     return (
         <>
-            {(mainLoading || loaders["home"]) && <Loader />}
+            {finishedLoading && <Loader />}
             <HomepageContainer>
                 <ImageContainer>
-                    <HomepageImage src={mainSrc} srcSet={mainSrcSet} />
+                    <AsyncImage onLoad={onLoad} key={"banner"} data={data[0]} />
                 </ImageContainer>
                 <InfoContainer>
                     <AboutContainer>

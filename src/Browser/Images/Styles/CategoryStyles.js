@@ -12,7 +12,7 @@ const fadein = keyframes`
 const CategoryContainer = styled.div`
     display: flex;
     flex-direction: row;
-    min-height: ${(props) => props.theme.bodyheight};
+    // min-height: ${(props) => props.theme.bodyheight};
     // height: ${(props) => props.theme.bodyheight};
     width: 100%;
     flex-grow: 1;

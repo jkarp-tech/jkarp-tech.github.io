@@ -1,6 +1,10 @@
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState, useContext } from "react";
+import { UrlContext } from "../Context/UrlProvider";
 
-const useEqualHeight = (urlArr) => {
+const useEqualHeight = (page) => {
+    const urlData = useContext(UrlContext);
+    const urlArr = urlData[page];
+
     const [leftLayout, setLeftLayout] = useState([]);
     const [rightLayout, setRightLayout] = useState([]);
 
