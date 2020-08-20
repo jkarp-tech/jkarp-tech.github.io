@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
     Image,
     ImageContainer,
@@ -8,20 +8,26 @@ import {
 } from "./Styles/AsyncImageStyles";
 import usePreloadImage from "../../Helpers/usePreloadImage";
 import ImageModal from "./ImageModal";
+import useIntersectionObserver from "../../Helpers/useIntersectionObserver";
+
+const formatURL = (urlsString) => ({
+    defaultSrc: urlsString.split(",")[0].split(" ")[0],
+    loadedSrc: urlsString,
+});
 
 const AsyncImage = ({ data, side, onLoad }) => {
     const { name, urlsString } = data;
 
+    const img = useRef(null);
+    const inView = useIntersectionObserver(img);
+
     const [src, srcSet] = usePreloadImage(
-        {
-            defaultSrc: urlsString.split(",")[0].split(" ")[0],
-            loadedSrc: urlsString,
-        },
-        onLoad
+        formatURL(urlsString),
+        onLoad,
+        inView
     );
 
     const [clicked, setClicked] = useState(false);
-
     const handleOpen = () => {
         if (side) {
             setClicked(true);
@@ -42,7 +48,7 @@ const AsyncImage = ({ data, side, onLoad }) => {
                 </ModalWrapper>
             )}
             <ImageContainer side={side} onClick={handleOpen}>
-                <Image side={side} src={src} srcSet={srcSet} />
+                <Image ref={img} side={side} src={src} srcSet={srcSet} />
                 {side && (
                     <ImageNameContainer side={side}>
                         <ImageName>{name}</ImageName>
