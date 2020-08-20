@@ -3,7 +3,6 @@ import React from "react";
 import {
     HomepageContainer,
     ImageContainer,
-    // HomepageImage,
     InfoContainer,
     AboutContainer,
     About,

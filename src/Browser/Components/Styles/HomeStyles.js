@@ -18,11 +18,6 @@ const HomepageContainer = styled.div`
     flex-grow: 1;
 `;
 
-const HomepageImage = styled.img`
-    width: 100%;
-    animation: ${fadein} 1s;
-`;
-
 const ImageContainer = styled.div`
     width: 100%;
     animation: ${fadein} 1s;
@@ -46,30 +41,9 @@ const InfoHeader = styled.div`
     font-size: 24px;
 `;
 
-const InfoHeaderContainer = styled.div`
-    width: 100%;
-`;
-
-const HeadshotContainer = styled.div`
-    animation: ${fadein} 1s;
-    flex-grow: 1;
-    flex-basis: 0;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-`;
-
-const Headshot = styled.img`
-    width: 80%;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px 1px grey;
-`;
-
 const AboutContainer = styled.div`
     padding: 30px;
     animation: ${fadein} 1s;
-    // flex-grow: 1;
-    // flex-basis: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,12 +59,8 @@ const About = styled.div`
 export {
     HomepageContainer,
     ImageContainer,
-    HomepageImage,
     InfoContainer,
     InfoHeader,
-    InfoHeaderContainer,
-    HeadshotContainer,
-    Headshot,
     AboutContainer,
     About,
 };
