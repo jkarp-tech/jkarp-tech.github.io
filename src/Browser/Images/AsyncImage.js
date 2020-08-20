@@ -1,34 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
     Image,
     ImageContainer,
     ImageName,
-    ModalInfoContainer,
-    ModalName,
-    ModalDescription,
-    ModalDate,
-    ModalContainer,
-    ModalImage,
-    ModalSvg,
-    ModalHeader,
-    ModalHeaderContainer,
-    ModalImageContainer,
     ImageNameContainer,
-    Info,
+    ModalWrapper,
 } from "./Styles/AsyncImageStyles";
 import usePreloadImage from "../../Helpers/usePreloadImage";
-import Modal from "./Modal";
+import ImageModal from "./ImageModal";
 
 const AsyncImage = ({ data, side, onLoad }) => {
-    const {
-        name,
-        height,
-        width,
-        createdAt,
-        description,
-        urlsString,
-        date,
-    } = data;
+    const { name, urlsString } = data;
 
     const [src, srcSet] = usePreloadImage(
         {
@@ -46,43 +28,19 @@ const AsyncImage = ({ data, side, onLoad }) => {
         }
     };
 
-    const handleClose = ({ target }) => {
-        setClicked(false);
-    };
-
-    const handleInfo = () => {
-        debugger;
-    };
-
-    const ShouldRender = ({ children }) => (clicked ? children : null);
-
     return (
         <>
-            <ShouldRender>
-                <Modal>
-                    <ModalContainer>
-                        <ModalHeaderContainer>
-                            <ModalHeader>
-                                <ModalSvg
-                                    src={"/Images/close.svg"}
-                                    onClick={handleClose}
-                                />
-                                <ModalSvg
-                                    src={"/Images/info.svg"}
-                                    onClick={handleInfo}
-                                />
-                            </ModalHeader>
-                        </ModalHeaderContainer>
-                        <ModalInfoContainer larger={height >= width}>
-                            <ModalImage
-                                larger={height >= width}
-                                src={src}
-                                srcSet={srcSet}
-                            />
-                        </ModalInfoContainer>
-                    </ModalContainer>
-                </Modal>
-            </ShouldRender>
+            {clicked && (
+                <ModalWrapper>
+                    <ImageModal
+                        clicked={clicked}
+                        setClicked={setClicked}
+                        data={data}
+                        src={src}
+                        srcSet={srcSet}
+                    />
+                </ModalWrapper>
+            )}
             <ImageContainer side={side} onClick={handleOpen}>
                 <Image side={side} src={src} srcSet={srcSet} />
                 {side && (
