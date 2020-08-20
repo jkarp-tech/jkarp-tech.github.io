@@ -68,8 +68,8 @@ const Headshot = styled.img`
 const AboutContainer = styled.div`
     padding: 30px;
     animation: ${fadein} 1s;
-    flex-grow: 1;
-    flex-basis: 0;
+    // flex-grow: 1;
+    // flex-basis: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
