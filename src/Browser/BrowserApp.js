@@ -15,15 +15,13 @@ import Contact from "./Components/Contact";
 import Upload from "./Components/Upload/Upload";
 import SignIn from "./Components/Upload/SignIn";
 
-// import useFirestore from "../Helpers/useFirestore";
-// import usePreloadImage from "../Helpers/usePreloadImage";
-
-import { ThemeProvider } from "styled-components";
 import { theme } from "./Styles/Configs";
 import {
     BrowserAppContainer,
     HorizontalCenter,
 } from "./Styles/BrowserAppStyles";
+
+import { ThemeProvider } from "styled-components";
 import UrlProvider from "../Context/UrlProvider";
 import LoaderProvider from "../Context/LoaderProvider";
 

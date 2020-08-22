@@ -1,8 +1,14 @@
 import React from "react";
 import { withOrientationChange } from "react-device-detect";
+import Header from "./Components/Header";
+import UrlProvider from "../Context/UrlProvider";
 
 const MobileApp = ({ isLandscape, isPortrait }) => {
-    return <div>MobileApp</div>;
+    return (
+        <UrlProvider>
+            <Header />
+        </UrlProvider>
+    );
 };
 
 export default withOrientationChange(MobileApp);
