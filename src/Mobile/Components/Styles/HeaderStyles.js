@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link }  from  "react-router-dom"
+import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.div`
     z-index: 1;
@@ -29,7 +29,6 @@ export const Letter = styled.span`
     flex-basis: 0;
 `;
 
-
 export const MenuContainer = styled.div`
     color: black;
     flex: 1 1 0;
@@ -37,9 +36,10 @@ export const MenuContainer = styled.div`
     justify-content: flex-end;
     align-items: center;
     padding-right: 20px;
-`
+`;
 
 export const Icon = styled.img`
-    max-width: 40%;
-    max-height: 40%;
-`
+    width: 30px;
+    height: 30px;
+`;
+

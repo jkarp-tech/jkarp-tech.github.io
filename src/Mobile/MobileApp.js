@@ -3,19 +3,17 @@ import {
     BrowserRouter as Router,
     Route,
     Switch,
-    Redirect,
-} from "react-router-dom"
-import { withOrientationChange } from "react-device-detect";
+    Redirect
+} from "react-router-dom";
 import Header from "./Components/Header";
 import UrlProvider from "../Context/UrlProvider";
 import LoaderProvider from "../Context/LoaderProvider";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./Styles/Configs"
+import { theme } from "./Styles/Configs";
 
-import { Birds } from "./Components/Categories"
+import { Birds } from "./Components/Categories";
 
-
-const MobileApp = ({ isLandscape, isPortrait }) => {
+const MobileApp = () => {
     return (
         <UrlProvider>
             <LoaderProvider>
@@ -44,4 +42,4 @@ const MobileApp = ({ isLandscape, isPortrait }) => {
     );
 };
 
-export default withOrientationChange(MobileApp);
+export default MobileApp;

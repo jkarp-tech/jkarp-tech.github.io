@@ -5,18 +5,18 @@ import {
     LogoContainer,
     Letter,
     MenuContainer,
-    Icon,
+    Icon
 } from "./Styles/HeaderStyles";
 
 const Header = () => {
     const WrapString = ({ children }) =>
         children.split("").map((l, i) => {
             return <Letter key={l + i}>{l}</Letter>;
-        })
+        });
 
     return (
         <HeaderContainer>
-            <LogoContainer to={"home"}>
+            <LogoContainer to={"birds"}>
                 <WrapString>Lauren&nbsp;</WrapString>
                 <WrapString>Karp&nbsp;</WrapString>
                 <WrapString>Photography</WrapString>
