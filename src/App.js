@@ -5,14 +5,14 @@ import MobileApp from "./Mobile/MobileApp";
 import AnonymousProvider from "./Context/AnonymousProvider";
 
 const App = () => (
-    <AnonymousProvider>
+    <>
         <BrowserView>
             <BrowserApp />
         </BrowserView>
         <MobileView>
             <MobileApp />
         </MobileView>
-    </AnonymousProvider>
+    </>
 );
 
 export default App;

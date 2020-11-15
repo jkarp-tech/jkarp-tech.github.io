@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadein = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+`;
 
 export const ModalContainer = styled.div`
     z-index: 11;
@@ -10,6 +19,7 @@ export const ModalContainer = styled.div`
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    animation: ${fadein} 1s;
 `;
 
 export const ModalHeaderContainer = styled.div`

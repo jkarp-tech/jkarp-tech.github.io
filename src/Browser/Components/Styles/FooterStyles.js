@@ -25,4 +25,6 @@ export const FooterLinksContainer = styled.div`
     justify-content: center;
 `;
 
-export const FooterText = styled.div``;
+export const FooterText = styled.div`
+    text-align: center;
+`;
