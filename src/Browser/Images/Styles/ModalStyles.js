@@ -16,7 +16,7 @@ export const ModalContainer = styled.div`
     top: 0;
     display: flex;
     position: fixed;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     animation: ${fadein} 1s;
@@ -30,7 +30,7 @@ export const ModalHeaderContainer = styled.div`
 export const ModalHeader = styled.div`
     display: flex;
     justify-content: flex-end;
-    padding: 30px;
+    padding: 10px;
     flex-direction: row;
 `;
 
@@ -46,6 +46,7 @@ export const ModalImageContainer = styled.div`
 `;
 
 export const ModalImage = styled.img`
+    object-fit: contain;
     ${({ larger }) => {
         if (larger) {
             return "height: 100%; width: auto;";
@@ -57,11 +58,13 @@ export const ModalImage = styled.img`
 
 export const ModalContent = styled.div`
     position: relative;
+    max-height: 90vh;
+    max-width: 90vw;
     ${({ larger }) => {
         if (larger) {
-            return "height: 85vw; max-height: 85vh;";
+            return "height: 90vh;";
         } else {
-            return "width: 90vw; max-height: 85vh; max-width: 1000px;";
+            return "width: 90vw;";
         }
     }}
 
