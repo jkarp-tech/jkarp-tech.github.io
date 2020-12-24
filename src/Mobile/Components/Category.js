@@ -16,7 +16,7 @@ const Category = ({ page }) => {
     
     const Images = () => {
         return urlArr.map((d) => (
-            <AsyncImage onLoad={onLoad} key={d.name} data={d} side={"a"}/>
+            <AsyncImage onLoad={onLoad} key={d.name} data={d} />
         ));
     }
 

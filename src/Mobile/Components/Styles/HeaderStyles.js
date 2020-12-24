@@ -17,7 +17,7 @@ export const LogoContainer = styled(Link)`
     text-decoration: none;
     color: black;
     display: flex;
-    font-size: 25px;
+    font-size: 20px;
     letter-spacing: 1px;
     font-weight: 400;
     align-items: center;
@@ -39,7 +39,7 @@ export const MenuContainer = styled.div`
 `;
 
 export const Icon = styled.img`
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 `;
 

@@ -21,4 +21,5 @@ export const ImageContainer = styled.div`
     flex: 1 0;
     display: flex;
     align-items: flex-end;
+    padding: 5px;
 `;

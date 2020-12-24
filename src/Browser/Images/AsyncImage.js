@@ -30,9 +30,9 @@ const AsyncImage = ({ data, side, onLoad }) => {
 
     const [clicked, setClicked] = useState(false);
     const handleOpen = () => {
-        if (side) {
-            setClicked(true);
-        }
+        // if (side) {
+        setClicked(true);
+        // }
     };
 
     return (

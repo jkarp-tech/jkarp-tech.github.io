@@ -10,8 +10,9 @@ import UrlProvider from "../Context/UrlProvider";
 import LoaderProvider from "../Context/LoaderProvider";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./Styles/Configs";
+import Footer from "../Browser/Components/Footer"
 
-import { Birds } from "./Components/Categories";
+import { Birds, Nature, Wildlife } from "./Components/Categories";
 
 const MobileApp = () => {
     return (
@@ -25,16 +26,17 @@ const MobileApp = () => {
                                 <Birds> Birds </Birds>
                             </Route>
                             <Route exact path="/wildlife">
-                                <div> wildlife </div>
+                                <Wildlife> wildlife </Wildlife>
                             </Route>
                             <Route exact path="/nature">
-                                <div> nature </div>
+                                <Nature> nature </Nature>
                             </Route>
                             <Route exact path="/contact">
                                 <div> contact </div>
                             </Route>
                             <Redirect to="/birds" />
                         </Switch>
+                        <Footer/>
                     </Router>
                 </ThemeProvider>
             </LoaderProvider>

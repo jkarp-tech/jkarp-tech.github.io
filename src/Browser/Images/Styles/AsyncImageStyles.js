@@ -27,6 +27,8 @@ export const ModalWrapper = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
 `;
 
 export const ImageName = styled.div`
@@ -60,7 +62,7 @@ export const ImageContainer = styled.div`
         if (side) {
             return "0px 5px 10px 5px";
         } else {
-            return "";
+            return "0px 0px 10px 0px";
         }
     }};
     width: 100%;
