@@ -7,17 +7,11 @@ import {
     MenuContainer,
     Icon
 } from "./Styles/HeaderStyles";
-import {
-    ModalContainer,
-    ModalLink,
-    ModalLinkContainer,
-    FooterContainer,
-} from "./Styles/MobileMobileStyles"
-import Modal from "../../Browser/Images/Modal"
+
 import Footer from "../../Browser/Components/Footer"
 
-const Header = () => {
-    const [clicked, setClicked] = useState(false)
+const Header = ({showNav}) => {
+    const setClicked = showNav[1]
     const WrapString = ({ children }) =>
         children.split("").map((l, i) => {
             return <Letter key={l + i}>{l}</Letter>;
@@ -37,41 +31,7 @@ const Header = () => {
     )
 
     return (
-        <>
-        {clicked && (
-            <Modal>
-                <ModalContainer>
-                    <Header/>
-                    <ModalLinkContainer>
-                        <ModalLink to={"birds"} onClick={
-                            () => setClicked(c => !c)
-                        }>
-                            Birds
-                        </ModalLink>
-                        <ModalLink to={"wildlife"} onClick={
-                            () => setClicked(c => !c)
-                        }>
-                            Wildlife
-                        </ModalLink>
-                        <ModalLink to={"nature"} onClick={
-                            () => setClicked(c => !c)
-                        }>
-                            Nature
-                        </ModalLink>
-                        <ModalLink to={"contact"} onClick={
-                            () => setClicked(c => !c)
-                        }>
-                            Contact
-                        </ModalLink>
-                    </ModalLinkContainer>
-                    <FooterContainer>
-                        <Footer />
-                    </FooterContainer>
-                </ModalContainer>
-            </Modal>
-        )}
             <Header/>
-        </>
     );
 };
 
