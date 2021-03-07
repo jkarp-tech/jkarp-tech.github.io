@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components'
 
 const fadein = keyframes`
     from {
@@ -7,7 +7,7 @@ const fadein = keyframes`
     to {
         opacity: 1;
     }
-`;
+`
 
 const HomepageContainer = styled.div`
     display: flex;
@@ -16,13 +16,13 @@ const HomepageContainer = styled.div`
     // height: ${(props) => props.theme.bodyheight};
     width: 100%;
     flex-grow: 1;
-`;
+`
 
 const ImageContainer = styled.div`
     width: 100%;
     animation: ${fadein} 1s;
     display: flex;
-`;
+`
 
 const InfoContainer = styled.div`
     width: 100%;
@@ -32,14 +32,14 @@ const InfoContainer = styled.div`
         flex-direction: column;
     }
     flex-grow: 1;
-`;
+`
 
 const InfoHeader = styled.div`
     margin: 30px;
     padding-bottom: 5px;
     border-bottom: 1px solid lightgray;
     font-size: 24px;
-`;
+`
 
 const AboutContainer = styled.div`
     padding: 30px;
@@ -48,13 +48,17 @@ const AboutContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`;
+`
 
 const About = styled.div`
     width: 80%;
     font-size: 20px;
     text-align: center;
-`;
+    @media (max-width: 450px) {
+        width: 95%;
+        font-size: 18px;
+    }
+`
 
 export {
     HomepageContainer,
@@ -63,4 +67,4 @@ export {
     InfoHeader,
     AboutContainer,
     About,
-};
+}

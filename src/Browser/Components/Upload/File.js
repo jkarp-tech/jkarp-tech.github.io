@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import ProgressBar from "./ProgressBar";
+import React, { useState, useEffect } from 'react'
+import ProgressBar from './ProgressBar'
 
 import {
     FileContainer,
@@ -17,97 +17,97 @@ import {
     Text,
     Error,
     Loading,
-} from "./Styles/FileStyles";
+} from './Styles/FileStyles'
 
-const types = ["image/png", "image/jpg", "image/jpeg"];
-const categories = ["birds", "wildlife", "nature", "homepage"];
+const types = ['image/png', 'image/jpg', 'image/jpeg']
+const categories = ['birds', 'wildlife', 'nature', 'favorites', 'homepage']
 
 const File = ({ input }) => {
-    const [file, setFile] = useState(null);
-    const [description, setDescription] = useState("");
-    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
-    const [category, setCategory] = useState(categories[0]);
-    const [name, setName] = useState(input.name);
-    const [src, setSrc] = useState(null);
-    const [height, setHeight] = useState(0);
-    const [width, setWidth] = useState(0);
+    const [file, setFile] = useState(null)
+    const [description, setDescription] = useState('')
+    const [date, setDate] = useState(new Date().toISOString().split('T')[0])
+    const [category, setCategory] = useState(categories[0])
+    const [name, setName] = useState(input.name)
+    const [src, setSrc] = useState(null)
+    const [height, setHeight] = useState(0)
+    const [width, setWidth] = useState(0)
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
 
-    const [didSubmit, setDidSubmit] = useState(false);
-    const [finished, setFinished] = useState(false);
-    const [error, setError] = useState(null);
+    const [didSubmit, setDidSubmit] = useState(false)
+    const [finished, setFinished] = useState(false)
+    const [error, setError] = useState(null)
 
     const FileCategoryOptions = () => {
         return categories.map((c) => (
             <option key={c} value={c}>
                 {c}
             </option>
-        ));
-    };
+        ))
+    }
 
     const SubmitRender = ({ children }) => {
         if (finished) {
-            return children[2];
+            return children[2]
         } else if (didSubmit) {
-            return children[1];
+            return children[1]
         } else {
-            return children[0];
+            return children[0]
         }
-    };
+    }
 
     useEffect(() => {
         if (types.includes(input.type)) {
-            setFile(input);
+            setFile(input)
 
-            const reader = new FileReader();
+            const reader = new FileReader()
 
             reader.onload = () => {
-                const img = new Image();
+                const img = new Image()
 
-                img.src = reader.result;
+                img.src = reader.result
 
                 img.onload = ({ target }) => {
-                    setSrc(reader.result);
-                    setHeight(target.height);
-                    setWidth(target.width);
-                    setLoading(false);
-                };
-            };
+                    setSrc(reader.result)
+                    setHeight(target.height)
+                    setWidth(target.width)
+                    setLoading(false)
+                }
+            }
 
-            reader.readAsDataURL(input);
+            reader.readAsDataURL(input)
         } else {
             setError(`You accidentally 
-            tried to upload: ${input.name}. Please only include png/jpg/jpeg`);
+            tried to upload: ${input.name}. Please only include png/jpg/jpeg`)
         }
-    }, [input]);
+    }, [input])
 
     const handleDescription = ({ target: { value } }) => {
-        setDescription(value);
-    };
+        setDescription(value)
+    }
 
     const handleDate = ({ target: { value } }) => {
-        setDate(value);
-    };
+        setDate(value)
+    }
 
     const handleCategory = ({ target: { value } }) => {
-        setCategory(value);
-    };
+        setCategory(value)
+    }
 
     const handleName = ({ target: { value } }) => {
-        setName(value);
-    };
+        setName(value)
+    }
 
     const handleSubmit = () => {
-        setDidSubmit(true);
-    };
+        setDidSubmit(true)
+    }
 
     if (error) {
-        return <Error>{error}</Error>;
+        return <Error>{error}</Error>
     }
 
     if (loading) {
-        return <Loading> Loading... </Loading>;
+        return <Loading> Loading... </Loading>
     }
 
     return (
@@ -132,7 +132,7 @@ const File = ({ input }) => {
                 <FileDateContainer>
                     <Text>Date</Text>
                     <FileDate
-                        type={"date"}
+                        type={'date'}
                         disabled={finished}
                         value={date}
                         onChange={handleDate}
@@ -159,7 +159,7 @@ const File = ({ input }) => {
                 <Text> Finished Submitting </Text>
             </SubmitRender>
         </FileContainer>
-    );
-};
+    )
+}
 
-export default File;
+export default File
