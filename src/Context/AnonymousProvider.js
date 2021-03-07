@@ -1,28 +1,27 @@
-import { useEffect, useState } from "react";
-import { projectAuth } from "../Firebase/config";
+import { useEffect, useState } from 'react'
+import { projectAuth } from '../Firebase/config'
 
 const AnonymousProvider = ({ children }) => {
-    const [signedIn, setSignedIn] = useState(false);
+    const [signedIn, setSignedIn] = useState(false)
 
     useEffect(() => {
         projectAuth
             .signInAnonymously()
             .then((user) => {
-                debugger;
-                setSignedIn(true);
+                setSignedIn(true)
             })
             .catch((error) => {
-                debugger;
-            });
+                debugger
+            })
         return () => {
-            setSignedIn(false);
-        };
-    }, []);
+            setSignedIn(false)
+        }
+    }, [])
 
     if (signedIn) {
-        return children;
+        return children
     }
-    return null;
-};
+    return null
+}
 
-export default AnonymousProvider;
+export default AnonymousProvider

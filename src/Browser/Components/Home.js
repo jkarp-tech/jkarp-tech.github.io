@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 import {
     HomepageContainer,
@@ -6,20 +6,25 @@ import {
     InfoContainer,
     AboutContainer,
     About,
-} from "./Styles/HomeStyles";
-import Loader from "./Loader";
-import AsyncImage from "../Images/AsyncImage";
-import useImagesLoaded from "../../Helpers/useImagesLoaded";
+} from './Styles/HomeStyles'
+import Loader from './Loader'
+import AsyncImage from '../Images/AsyncImage'
+import useImagesLoaded from '../../Helpers/useImagesLoaded'
 
 const Home = () => {
-    const [finishedLoading, onLoad, data] = useImagesLoaded("home");
+    const [finishedLoading, onLoad, data] = useImagesLoaded('home')
 
     return (
         <>
             {finishedLoading && <Loader />}
             <HomepageContainer>
                 <ImageContainer>
-                    <AsyncImage onLoad={onLoad} key={"banner"} data={data[0]} />
+                    <AsyncImage
+                        onLoad={onLoad}
+                        key={'banner'}
+                        data={data[0]}
+                        openable={false}
+                    />
                 </ImageContainer>
                 <InfoContainer>
                     <AboutContainer>
@@ -32,7 +37,7 @@ const Home = () => {
                 </InfoContainer>
             </HomepageContainer>
         </>
-    );
-};
+    )
+}
 
-export default Home;
+export default Home

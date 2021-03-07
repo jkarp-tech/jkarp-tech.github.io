@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 import {
     FooterContainer,
@@ -6,7 +6,7 @@ import {
     FooterLinks,
     FooterLinksContainer,
     FooterText,
-} from "./Styles/FooterStyles";
+} from './Styles/FooterStyles'
 
 const Footer = () => {
     return (
@@ -17,13 +17,13 @@ const Footer = () => {
                     Copyright © 2020 Lauren Karp Photography - All Rights
                     Reserved.
                 </FooterText>
-                <FooterLinksContainer>
+                {/* <FooterLinksContainer>
                     <FooterLinks src={"/Images/instagram.svg"} />
                     <FooterLinks src={"/Images/linkedin.svg"} />
-                </FooterLinksContainer>
+                </FooterLinksContainer> */}
             </FooterContainer>
         </>
-    );
-};
+    )
+}
 
-export default Footer;
+export default Footer
