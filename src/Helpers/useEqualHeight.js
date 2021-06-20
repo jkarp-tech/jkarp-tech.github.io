@@ -1,36 +1,38 @@
-import { useLayoutEffect, useState, useContext } from "react";
-import { UrlContext } from "../Context/UrlProvider";
+import { useLayoutEffect, useState, useContext } from 'react'
+import { UrlContext } from '../Context/UrlProvider'
 
 const useEqualHeight = (page) => {
-    const urlData = useContext(UrlContext);
-    const urlArr = urlData[page];
+    const urlData = useContext(UrlContext)
+    const urlArr = urlData[page].sort(
+        (img1, img2) => new Date(img2.date) - new Date(img1.date)
+    )
 
-    const [leftLayout, setLeftLayout] = useState([]);
-    const [rightLayout, setRightLayout] = useState([]);
+    const [leftLayout, setLeftLayout] = useState([])
+    const [rightLayout, setRightLayout] = useState([])
 
     useLayoutEffect(() => {
-        let left = 0;
-        let right = 0;
-        let leftLayout = [];
-        let rightLayout = [];
+        let left = 0
+        let right = 0
+        let leftLayout = []
+        let rightLayout = []
 
         for (let i = 0; i < urlArr.length; i++) {
             if (left <= right) {
-                leftLayout.push(urlArr[i]);
-                let { width, height } = urlArr[i];
-                left += height / width;
+                leftLayout.push(urlArr[i])
+                let { width, height } = urlArr[i]
+                left += height / width
             } else {
-                rightLayout.push(urlArr[i]);
-                let { width, height } = urlArr[i];
-                right += height / width;
+                rightLayout.push(urlArr[i])
+                let { width, height } = urlArr[i]
+                right += height / width
             }
         }
 
-        setLeftLayout(leftLayout);
-        setRightLayout(rightLayout);
-    }, [urlArr]);
+        setLeftLayout(leftLayout)
+        setRightLayout(rightLayout)
+    }, [urlArr])
 
-    return [leftLayout, rightLayout];
-};
+    return [leftLayout, rightLayout]
+}
 
-export default useEqualHeight;
+export default useEqualHeight

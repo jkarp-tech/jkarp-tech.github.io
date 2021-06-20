@@ -10,6 +10,7 @@ import {
     ModalHeader,
     ModalHeaderContainer,
     Info,
+    FullHeight
 } from "./Styles/ModalStyles";
 
 const ImageModal = ({ setClicked, data, src, srcSet }) => {
@@ -33,18 +34,19 @@ const ImageModal = ({ setClicked, data, src, srcSet }) => {
                     <ModalSvg src={"/Images/info.svg"} onClick={handleInfo} />
                 </ModalHeader>
             </ModalHeaderContainer>
-            <ModalContent larger={height >= width} show={show}>
-                <ModalImage
-                    larger={height >= width}
-                    src={src}
-                    srcSet={srcSet}
-                />
-                <Info show={show}>
-                    <ModalName>{name}</ModalName>
-                    <ModalDate>{date}</ModalDate>
-                    <ModalDescription>{description}</ModalDescription>
-                </Info>
-            </ModalContent>
+                <ModalContent larger={height >= width}>
+                    <ModalImage
+                        larger={height >= width}
+                        show={show}
+                        src={src}
+                        srcSet={srcSet}
+                    />
+                    <Info show={show}>
+                        <ModalName>{name}</ModalName>
+                        <ModalDate>{date}</ModalDate>
+                        <ModalDescription>{description}</ModalDescription>
+                    </Info>
+                </ModalContent>
         </ModalContainer>
     );
 };

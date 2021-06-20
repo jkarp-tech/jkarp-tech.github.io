@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadein = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+`;
 
 export const ModalContainer = styled.div`
     z-index: 11;
@@ -10,6 +19,7 @@ export const ModalContainer = styled.div`
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    animation: ${fadein} 1s;
 `;
 
 export const ModalHeaderContainer = styled.div`
@@ -20,7 +30,7 @@ export const ModalHeaderContainer = styled.div`
 export const ModalHeader = styled.div`
     display: flex;
     justify-content: flex-end;
-    padding: 30px;
+    padding: 10px;
     flex-direction: row;
 `;
 
@@ -36,36 +46,27 @@ export const ModalImageContainer = styled.div`
 `;
 
 export const ModalImage = styled.img`
-    ${({ larger }) => {
-        if (larger) {
-            return "height: 100%; width: auto;";
-        } else {
-            return "width: 100%; height: 100%;";
-        }
-    }}
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    max-height: 95vh;
+    max-width: 95vw;
+
+    filter: ${({ show }) => (show ? 'brightness(40%)' : 'None')};
+    transition: filter 0.5s;
 `;
 
 export const ModalContent = styled.div`
     position: relative;
+    max-height: 90vh;
+    max-width: 90vw;
     ${({ larger }) => {
         if (larger) {
-            return "height: 85vw; max-height: 85vh;";
+            return "height: 90vh; width: 90vw;";
         } else {
-            return "width: 90vw; max-height: 85vh; max-width: 1000px;";
+            return "width: 90vw; height: 90vh";
         }
     }}
-
-    &:after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: rgba(0, 0, 0, 0.6);
-        opacity: ${({ show }) => (show ? 1 : 0)};
-        transition: all 0.5s;
-    }
 `;
 
 export const Info = styled.div`
@@ -77,8 +78,9 @@ export const Info = styled.div`
     top: 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s;
 `;
 
 export const ModalName = styled.div`
