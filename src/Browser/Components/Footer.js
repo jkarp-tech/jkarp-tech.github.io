@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
 import {
     FooterContainer,
     FooterLine,
     FooterLinks,
     FooterLinksContainer,
-    FooterText,
-} from './Styles/FooterStyles'
+    FooterText
+} from "./Styles/FooterStyles";
 
 const Footer = () => {
     return (
@@ -14,7 +14,7 @@ const Footer = () => {
             <FooterLine />
             <FooterContainer>
                 <FooterText>
-                    Copyright © 2020 Lauren Karp Photography - All Rights
+                    Copyright © 2021 Lauren Karp Photography LLC - All Rights
                     Reserved.
                 </FooterText>
                 {/* <FooterLinksContainer>
@@ -23,7 +23,7 @@ const Footer = () => {
                 </FooterLinksContainer> */}
             </FooterContainer>
         </>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;

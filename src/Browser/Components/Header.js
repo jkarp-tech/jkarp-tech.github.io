@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
     HeaderContainer,
     LeftContainer,
@@ -7,20 +7,20 @@ import {
     LogoContainer,
     Letter,
     LogoTop,
-    LogoBottom,
-} from './Styles/HeaderStyles'
-import NavItem from './NavItem'
+    LogoBottom
+} from "./Styles/HeaderStyles";
+import NavItem from "./NavItem";
 
 const Header = () => {
     const WrapString = ({ children }) =>
-        children.split('').map((l, i) => {
-            return <Letter key={l + i}>{l}</Letter>
-        })
+        children.split("").map((l, i) => {
+            return <Letter key={l + i}>{l}</Letter>;
+        });
 
     return (
         <HeaderContainer>
             <LeftContainer>
-                <LogoContainer to={'home'}>
+                <LogoContainer to={"home"}>
                     <LogoTop>
                         <WrapString>LAUREN KARP</WrapString>
                     </LogoTop>
@@ -31,15 +31,16 @@ const Header = () => {
             </LeftContainer>
             <RightContainer>
                 <NavItemContainer>
-                    <NavItem to={'/home'}>home</NavItem>
-                    <NavItem to={'/birds'}>birds</NavItem>
-                    <NavItem to={'/wildlife'}>wildlife</NavItem>
-                    <NavItem to={'/nature'}>nature</NavItem>
-                    <NavItem to={'/favorites'}>favorites</NavItem>
-                    <NavItem to={'/contact'}>contact</NavItem>
+                    <NavItem to={"/home"}>home</NavItem>
+                    <NavItem to={"/birds"}>birds</NavItem>
+                    <NavItem to={"/wildlife"}>wildlife</NavItem>
+                    <NavItem to={"/nature"}>nature</NavItem>
+                    <NavItem to={"/about"}>about</NavItem>
+                    <NavItem to={"/shop"}>shop</NavItem>
+                    <NavItem to={"/contact"}>contact</NavItem>
                 </NavItemContainer>
             </RightContainer>
         </HeaderContainer>
-    )
-}
-export default Header
+    );
+};
+export default Header;

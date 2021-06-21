@@ -1,16 +1,22 @@
 import React from "react";
 
-import { ContactContainer, ContactHeader, Email } from "./Styles/ContactStyles";
+import {
+    ContactContainer,
+    ContactHeader,
+    ContactImage,
+    Email
+} from "./Styles/ContactStyles";
 
 const Contact = () => {
     return (
         <ContactContainer>
+            <ContactImage src="/Images/contact.jpg" />
             <ContactHeader>
                 For additional information or to see more images, please send us
                 an email. I'll get back to you soon and thank you for your
                 interest!
             </ContactHeader>
-            <Email>{"FirstnameLastname@gmail.com"}</Email>
+            <Email>{"lauren@laurenkarp.com"}</Email>
         </ContactContainer>
     );
 };

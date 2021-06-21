@@ -11,11 +11,12 @@ export const HeaderContainer = styled.div`
     height: 70px;
     min-height: 70px;
     background-color: white;
-    @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
+    @media (max-width: ${props => props.theme.breakpoints.md}px) {
         flex-direction: column;
-        height: 200px;
+        height: 100%;
         min-height: 200px;
         position: static;
+        padding-bottom: 15px;
     }
 `;
 
@@ -24,7 +25,7 @@ export const LeftContainer = styled.div`
     display: flex;
     flex-flow: column;
     justify-content: center;
-    @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
+    @media (max-width: ${props => props.theme.breakpoints.md}px) {
         align-items: center;
         padding-bottom: 15px;
         padding: 30px 0px 15px 0px;
@@ -39,7 +40,7 @@ export const LogoContainer = styled(Link)`
     letter-spacing: 1px;
     font-weight: 400;
     flex-direction: column;
-    @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
+    @media (max-width: ${props => props.theme.breakpoints.md}px) {
         font-size: 30px;
     }
 `;
@@ -49,7 +50,7 @@ export const RightContainer = styled.div`
     display: flex;
     flex-flow: column;
     justify-content: center;
-    @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
+    @media (max-width: ${props => props.theme.breakpoints.md}px) {
         align-items: center;
         padding: 0px;
         flex-grow: 1;
@@ -71,4 +72,7 @@ export const Letter = styled.span`
 
 export const NavItemContainer = styled.div`
     display: flex;
+    @media (max-width: ${props => props.theme.breakpoints.md}px) {
+        flex-direction: column;
+    }
 `;
