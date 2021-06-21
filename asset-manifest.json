@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.34ddbca1.chunk.css",
+    "main.js": "/static/js/main.ac78cb2e.chunk.js",
+    "main.js.map": "/static/js/main.ac78cb2e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fb1aba0e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.fb1aba0e.js.map",
+    "static/js/2.d3b39e85.chunk.js": "/static/js/2.d3b39e85.chunk.js",
+    "static/js/2.d3b39e85.chunk.js.map": "/static/js/2.d3b39e85.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.62b548758f5ab0ab105eefb3e87f4574.js": "/precache-manifest.62b548758f5ab0ab105eefb3e87f4574.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.34ddbca1.chunk.css.map": "/static/css/main.34ddbca1.chunk.css.map",
+    "static/js/2.d3b39e85.chunk.js.LICENSE.txt": "/static/js/2.d3b39e85.chunk.js.LICENSE.txt",
+    "static/media/ShopImage.png": "/static/media/ShopImage.1f8f38c5.png",
+    "static/media/about.jpeg": "/static/media/about.20fd8e32.jpeg",
+    "static/media/contact.jpg": "/static/media/contact.39d15d87.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fb1aba0e.js",
+    "static/js/2.d3b39e85.chunk.js",
+    "static/css/main.34ddbca1.chunk.css",
+    "static/js/main.ac78cb2e.chunk.js"
+  ]
+}
