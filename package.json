@@ -9,6 +9,7 @@
     "browser-image-compression": "^1.0.12",
     "firebase": "^7.17.1",
     "firebase-tools": "^8.7.0",
+    "hamburger-react": "^2.4.1",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-device-detect": "^1.13.1",
