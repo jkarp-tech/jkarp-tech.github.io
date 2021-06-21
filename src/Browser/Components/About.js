@@ -4,11 +4,12 @@ import {
     AboutText,
     AboutTextContainer
 } from "./Styles/AboutStyles";
+import AboutMImage from "../../Images/about.jpeg";
 
 const About = () => {
     return (
         <>
-            <AboutImage src="/Images/about.jpeg" />
+            <AboutImage src={AboutMImage} />
             <AboutTextContainer>
                 <AboutText>
                     Lauren Karp is a nature photographer who specializes in
