@@ -1,29 +1,31 @@
-import React from 'react'
+import React from "react";
 import {
     BrowserRouter as Router,
     Route,
     Switch,
-    Redirect,
-} from 'react-router-dom'
+    Redirect
+} from "react-router-dom";
 
-import { Birds, Wildlife, Nature, Favorites } from './Images/Categories'
+import { Birds, Wildlife, Nature, Favorites } from "./Images/Categories";
 
-import Header from './Components/Header'
-import Footer from './Components/Footer'
-import Home from './Components/Home'
-import Contact from './Components/Contact'
-import Upload from './Components/Upload/Upload'
-import SignIn from './Components/Upload/SignIn'
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Home from "./Components/Home";
+import About from "./Components/About";
+import Shop from "./Components/Shop";
+import Contact from "./Components/Contact";
+import Upload from "./Components/Upload/Upload";
+import SignIn from "./Components/Upload/SignIn";
 
-import { theme } from './Styles/Configs'
+import { theme } from "./Styles/Configs";
 import {
     BrowserAppContainer,
-    HorizontalCenter,
-} from './Styles/BrowserAppStyles'
+    HorizontalCenter
+} from "./Styles/BrowserAppStyles";
 
-import { ThemeProvider } from 'styled-components'
-import UrlProvider from '../Context/UrlProvider'
-import LoaderProvider from '../Context/LoaderProvider'
+import { ThemeProvider } from "styled-components";
+import UrlProvider from "../Context/UrlProvider";
+import LoaderProvider from "../Context/LoaderProvider";
 
 const BrowserApp = () => {
     return (
@@ -56,6 +58,12 @@ const BrowserApp = () => {
                                     <Route exact path="/signin">
                                         <SignIn />
                                     </Route>
+                                    <Route exact path="/about">
+                                        <About />
+                                    </Route>
+                                    <Route exact path="/shop">
+                                        <Shop />
+                                    </Route>
                                     <Route exact path="/home">
                                         <Home />
                                     </Route>
@@ -68,6 +76,6 @@ const BrowserApp = () => {
                 </ThemeProvider>
             </LoaderProvider>
         </UrlProvider>
-    )
-}
-export default BrowserApp
+    );
+};
+export default BrowserApp;
